@@ -56,6 +56,7 @@ const predict = async () => {
     const frame = getFrame();
     // Request inference
     const result = await faceLandmarker.detect(frame);
+    console.log(result)
     // Validate and process results
     if(result.faceBlendshapes[0]) inferEyes(result.faceBlendshapes[0].categories);
     // Recall loop function
@@ -122,7 +123,6 @@ const timestamp = () => new Date().getTime();
  * Use speech synthesis to provide an alert to user suggesting to stop the car and sleep
  */
 const alertUser = ()=>{
-    strikes = 0; // reset strikes
     // Create message utterance
     const utt = new SpeechSynthesisUtterance("Por favor, deténgase y descanse. No ponga en riesgo su vida y la de los demás.");
     utt.lang = "es"; // lang spanish (es)
